@@ -9,23 +9,23 @@ local Run = game:GetService("RunService")
 local Tween = game:GetService("TweenService")
 local UIS = game:GetService("UserInputService")
 
-local All = {
+local All = {}
 
-function GetCharacterInfo(newchar)
-char = newchar
-hroot, hum = newchar:WaitForChild("HumanoidRootPart"), newchar:WaitForChild("Humanoid")
-camera = workspace.CurrentCamera
-end
+	function All.GetCharacterInfo(newchar)
+		char = newchar
+		hroot, hum = newchar:WaitForChild("HumanoidRootPart"), newchar:WaitForChild("Humanoid")
+		camera = workspace.CurrentCamera
+	end
 
-function TweenPlayer(typeoftween, cframe, speed, character, callback)
-	callback = callback or function() end
-	local velocity = (character.PrimaryPart.CFrame.Position - cframe.Position).Magnitude / speed
-	local tweenlocal = Tween:Create(character.PrimaryPart, TweenInfo.new(velocity, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false), {CFrame = cframe})
-	tweenlocal:Play()
-	tweenlocal.Completed:Once(function()
-		callback()
-	end)
-end
-}
+	function All.TweenPlayer(typeoftween, cframe, speed, character, callback)
+		callback = callback or function() end
+		local velocity = (character.PrimaryPart.CFrame.Position - cframe.Position).Magnitude / speed
+		local tweenlocal = Tween:Create(character.PrimaryPart, TweenInfo.new(velocity, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false), {CFrame = cframe})
+		tweenlocal:Play()
+		tweenlocal.Completed:Once(function()
+			callback()
+		end)
+	end
+
 
 return All
