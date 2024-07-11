@@ -18,6 +18,9 @@ local All = {}
 	end
 
 	function All.TweenPlayer(typeoftween, cframe, speed, character, callback)
+		if not typeoftween then
+			typeoftween = "Linear"
+		end
 		callback = callback or function() end
 	local tweenlocal
 		if typeoftween == "Linear" then
