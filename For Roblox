@@ -1,0 +1,26 @@
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local hroot, hum, char
+local anims = {}
+local camera = workspace.CurrentCamera
+
+local Run = game:GetService("RunService")
+local Tween = game:GetService("TweenService")
+local UIS = game:GetService("UserInputService")
+
+function GetCharacterInfo(newchar)
+char = newchar
+hroot, hum = newchar:WaitForChild("HumanoidRootPart"), newchar:WaitForChild("Humanoid")
+camera = workspace.CurrentCamera
+end
+
+function TweenPlayer(typeoftween, cframe, speed, character, callback)
+	callback = callback or function() end
+	local velocity = (character.PrimaryPart.CFrame.Position - cframe.Position).Magnitude / speed
+	local tweenlocal = Tween:Create(character.PrimaryPart, TweenInfo.new(velocity, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false), {CFrame = cframe})
+	tweenlocal:Play()
+	tweenlocal.Completed:Once(function()
+		callback()
+	end)
+end
