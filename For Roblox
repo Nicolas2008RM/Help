@@ -9,6 +9,8 @@ local Run = game:GetService("RunService")
 local Tween = game:GetService("TweenService")
 local UIS = game:GetService("UserInputService")
 
+local All = {
+
 function GetCharacterInfo(newchar)
 char = newchar
 hroot, hum = newchar:WaitForChild("HumanoidRootPart"), newchar:WaitForChild("Humanoid")
@@ -24,3 +26,6 @@ function TweenPlayer(typeoftween, cframe, speed, character, callback)
 		callback()
 	end)
 end
+}
+
+return All
